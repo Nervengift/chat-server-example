@@ -1,0 +1,7 @@
+[package]
+name = "socket-server-test"
+version = "0.1.0"
+authors = ["Clemens Wallrath <dev@nervengiftlabs.de>"]
+
+[dependencies]
+bufstream = "0.1"
