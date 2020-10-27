@@ -17,7 +17,7 @@ fn handle_connection(stream: &mut BufStream<TcpStream>, chan: Sender<String>, ar
     stream.flush().unwrap();
     let mut name = String::new();
     stream.read_line(&mut name).unwrap();
-    let name = name.trim_right();
+    let name = name.trim_end();
     stream.write_fmt(format_args!("Hello, {}!\n", name)).unwrap();
     stream.flush().unwrap();
 
@@ -67,7 +67,7 @@ fn main() {
     for stream in listener.incoming() {
         match stream {
             Err(_) => println!("listen error"),
-            Ok(mut stream) => {
+            Ok(stream) => {
                 println!("connection from {} to {}",
                          stream.peer_addr().unwrap(),
                          stream.local_addr().unwrap());
